@@ -12,7 +12,7 @@ User needs to do math when only wanting small parts of a YT video\
 Only works for YT URLs for now\
 Pros\
 Faster than using other 3rd party downloaders and needing to trasnfer files around\
-Will try to get 4k video compared to most other 3rd party downloaders only doing 1080.\ 
+Will try to get 4k video compared to most other 3rd party downloaders only doing 1080.\
 After download user can move YT video to other video editing APPS for cliping etc.\
 For users will no ad block this makes getting YT videos easier
 # Dependencies

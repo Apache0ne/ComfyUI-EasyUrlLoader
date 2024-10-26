@@ -12,7 +12,7 @@ ComfyUI Folder\
 ```pip install yt_dlp```\
 Inside Custom_nodes Folder\
 ```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```\
-IF using Matrix\ 
+IF using Matrix \
 Inside venv\
 ```activate```\
 ```pip install yt_dlp```\

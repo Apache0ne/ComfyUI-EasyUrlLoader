@@ -9,5 +9,4 @@ Will get the best resolution for the video so works great when running a video t
 # Installation
 Open CMD inside Custom_nodes Folder\
 ```git clone ```\
-```pip install requirements.txt```\
 ComfyUI-Manager (WIP)

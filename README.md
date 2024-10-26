@@ -7,15 +7,15 @@ Will get the best resolution for the video so works great when running a video t
 # Dependencies
 'yt_dlp' py lib
 # Installation
-IF using Windows Port version/ 
-ComfyUI Folder/
-```pip install yt_dlp```/
+IF using Windows Port version\
+ComfyUI Folder\
+```pip install yt_dlp```\
 Inside Custom_nodes Folder\
 ```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```\
-IF using Matrix/ 
-Inside venv/
-```activate```
-```pip install yt_dlp```/
+IF using Matrix\ 
+Inside venv\
+```activate```\
+```pip install yt_dlp```\
 Inside Custom_nodes Folder\
-```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```/
+```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```\
 ComfyUI-Manager (WIP)

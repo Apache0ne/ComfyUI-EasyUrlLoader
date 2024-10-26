@@ -4,7 +4,7 @@ Needed a faster way to download YT videos when using comfyUI and testing new tec
 # Dependencies
 'yt_dlp' py lib
 # Installation
-Open CMD inside Custom_nodes Folder 
-```git clone ```
-```pip install requirements.txt```
+Open CMD inside Custom_nodes Folder__
+```git clone ``` __
+```pip install requirements.txt```__
 ComfyUI-Manager (WIP)

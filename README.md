@@ -8,7 +8,7 @@ Will get the best resolution for the video so works great when running a video t
 cons\
 User needs to go to downloads inside the custom node and see the FPS of downloaded videos\
 User needs to do math when only wanting small parts of a YT video\
-4k videos get big fast \ 
+4k videos get big fast\ 
 Only works for YT URLs for now\
 Pros\
 Faster than using other 3rd party downloaders and needing to trasnfer files around\

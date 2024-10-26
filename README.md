@@ -4,6 +4,17 @@ A simple YT downloader node for ComfyUI using video Urls. \
 Needed a faster way to download YT videos when using comfyUI and testing new tech. \
 Video Downloads will be stored inside folder with node, needed when finding the FPS of the youtube vide. \
 Will get the best resolution for the video so works great when running a video through a CN for a vid2vid pass.
+#CONS & PROS
+cons\
+User needs to go to downloads inside the custom node and see the FPS of downloaded videos\
+User needs to do math when only wanting small parts of a YT video\
+4k videos get big fast\ 
+Only works for YT URLs for now\
+Pros\
+Faster than using other 3rd party downloaders and needing to trasnfer files around\
+Will try to get 4k video compared to most other 3rd party downloaders only doing 1080.\ 
+After download user can move YT video to other video editing APPS for cliping etc.\
+For users will no ad block this makes getting YT videos easier
 # Dependencies
 'yt_dlp' py lib
 # Installation

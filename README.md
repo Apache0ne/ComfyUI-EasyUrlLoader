@@ -17,6 +17,6 @@ Inside venv/
 ```activate```
 ```pip install yt_dlp```/
 Inside Custom_nodes Folder\
-```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```\
+```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```
 
 ComfyUI-Manager (WIP)

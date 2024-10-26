@@ -3,7 +3,7 @@ import cv2
 import yt_dlp
 import numpy as np
 
-class FancyLoader:
+class EasyUrlLoader:
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -68,5 +68,5 @@ class FancyLoader:
             return ("Error: Unable to download video",)
 
 
-NODE_CLASS_MAPPINGS = {"FancyLoader": FancyLoader}
-NODE_DISPLAY_NAME_MAPPINGS = {"FancyLoader": "Fancy Loader"}
+NODE_CLASS_MAPPINGS = {"EasyUrlLoader": EasyUrlLoader}
+NODE_DISPLAY_NAME_MAPPINGS = {"EasyUrlLoader": "EasyUrl Loader"}

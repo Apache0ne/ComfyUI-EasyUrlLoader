@@ -8,5 +8,5 @@ Will get the best resolution for the video so works great when running a video t
 'yt_dlp' py lib
 # Installation
 Open CMD inside Custom_nodes Folder\
-```git clone ```\
+```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```\
 ComfyUI-Manager (WIP)

@@ -18,7 +18,7 @@ class EasyUrlLoader:
 
     def download_video(self, url):
         try:
-            output_path = './custom_nodes/ComfyUI-FancyLoader/downloads'
+            output_path = './custom_nodes/ComfyUI-EasyUrlLoader/downloads'
             os.makedirs(output_path, exist_ok=True)
             ydl_opts = {
                 'format': 'bestvideo[height<=2160]+bestaudio/best[height<=2160]/best[height<=2160]',

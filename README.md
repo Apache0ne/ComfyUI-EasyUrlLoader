@@ -2,13 +2,11 @@
 A simple YT downloader node for ComfyUI using video Urls. \
 ![image](https://github.com/user-attachments/assets/30501d79-6073-4653-8eaf-452ebc7fd719)\
 Needed a faster way to download YT videos when using comfyUI and testing new tech. \
-Video Downloads will be stored inside folder with node, needed when finding the FPS of the youtube vide. \
 Will get the best resolution for the video so works great when running a video through a CN for a vid2vid pass.
 # CONS & PROS
 Cons\
 User needs to go to downloads inside the custom node and see the FPS of downloaded videos\
 User needs to do math when only wanting small parts of a YT video\
-4k videos get big fast\
 Only works for YT URLs for now\
 Pros\
 Faster than using other 3rd party downloaders and needing to trasnfer files around\

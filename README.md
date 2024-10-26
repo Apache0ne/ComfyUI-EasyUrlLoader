@@ -5,7 +5,7 @@ Needed a faster way to download YT videos when using comfyUI and testing new tec
 Video Downloads will be stored inside folder with node, needed when finding the FPS of the youtube vide. \
 Will get the best resolution for the video so works great when running a video through a CN for a vid2vid pass.
 # CONS & PROS
-cons\
+Cons\
 User needs to go to downloads inside the custom node and see the FPS of downloaded videos\
 User needs to do math when only wanting small parts of a YT video\
 4k videos get big fast\

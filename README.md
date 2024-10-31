@@ -16,6 +16,8 @@ For users will no ad block this makes getting YT videos easier
 ## Dependencies
 'yt_dlp' py lib
 ## Installation
+ComfyUI-Manager (rec)\
+Can be downloaded from ComfyUI-manager\
 IF using Windows Port version\
 ComfyUI Folder\
 ```pip install yt_dlp```\
@@ -26,5 +28,4 @@ Inside venv\Scripts\
 ```activate```\
 ```pip install yt_dlp```\
 Inside Custom_nodes Folder\
-```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```\
-ComfyUI-Manager (WIP)
+```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```

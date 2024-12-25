@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-easyurlloader"
+description = "Simple 4k YT Downloader Through URL"
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["yt_dlp"]
+
+[project.urls]
+Repository = "https://github.com/Apache0ne/ComfyUI-EasyUrlLoader"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-EasyUrlLoader"
+Icon = ""

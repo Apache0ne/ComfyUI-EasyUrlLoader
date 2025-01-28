@@ -14,7 +14,7 @@ Will try to get 4k video compared to most other 3rd party downloaders only doing
 After download user can move YT video to other video editing APPS for cliping etc.\
 For users will no ad block this makes getting YT videos easier
 ## Dependencies
-'yt_dlp' py lib
+'yt_dlp' py lib\
 'FFmpeg' non-py lib 
 ## Installation
 ComfyUI-Manager (rec)\

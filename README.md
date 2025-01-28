@@ -15,7 +15,7 @@ After download user can move YT video to other video editing APPS for cliping et
 For users will no ad block this makes getting YT videos easier
 ## Dependencies
 'yt_dlp' py lib\
-'ffmpeg-python' py lib(not sure if needed but good to have)\
+'ffmpeg-python' py lib\
 'FFmpeg' non-py lib 
 ## Installation
 ComfyUI-Manager (rec)\

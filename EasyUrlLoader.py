@@ -8,11 +8,11 @@ class EasyUrlLoader:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "url": ("STRING", {"default": "https://www.Fancy.com/watch?v=your_video_url", "label": "Video URL"})
+                "url": ("video", {"default": "https://www.Fancy.com/watch?v=your_video_url", "label": "Video URL"})
             }
         }
 
-    RETURN_TYPES = ("video",)  # Return type changed to STRING for video file path
+    RETURN_TYPES = ("STRING",)  # Return type changed to STRING for video file path
     FUNCTION = "download_video"
     CATEGORY = "Custom Nodes"
 
@@ -40,7 +40,7 @@ class EasyUrlLoader:
             if not video_path or not os.path.exists(video_path):
                 raise FileNotFoundError(f'Video file not found: {video_path}')
 
-            batch_size = 100  
+            batch_size = 100
             cap = cv2.VideoCapture(video_path)
             frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
             processed_frames = 0
@@ -54,7 +54,6 @@ class EasyUrlLoader:
                     frames.append(frame)
 
                 if frames:
-                   
                     processed_frames += len(frames)
             cap.release()
 

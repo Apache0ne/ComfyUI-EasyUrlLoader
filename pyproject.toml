@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-easyurlloader"
-description = "testing new comfy-node-registry second try"
-version = "1.0.2"
+description = "testing new comfy-node-registry third try"
+version = "1.0.3"
 license = {file = "LICENSE"}
 dependencies = ["yt_dlp"]
 

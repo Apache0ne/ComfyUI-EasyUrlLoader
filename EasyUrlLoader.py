@@ -8,12 +8,11 @@ class EasyUrlLoader:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "url": ("string", {"default": "https://www.Fancy.com/watch?v=your_video_url", "label": "Video URL"})
+                "url": ("STRING", {"default": "https://www.Fancy.com/watch?v=your_video_url", "label": "Video URL"})
             }
         }
 
     RETURN_TYPES = ("STRING",)  # Return type changed to STRING for video file path
-    RETURN_NAMES = ("video")
     FUNCTION = "download_video"
     CATEGORY = "Custom Nodes"
 

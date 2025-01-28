@@ -30,7 +30,7 @@ Inside venv\Scripts\
 ```pip install yt_dlp```\
 Inside Custom_nodes Folder\
 ```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```\
-## FFmpeg Installation\
+## FFmpeg Installation
 Download pre-built package here based on OS(bottom middle left):
 ```https://ffmpeg.org/download.html#build-windows```\
 Use ```7-Zip``` or another archive tool to extract the .7z file\
@@ -38,5 +38,5 @@ Locate the ```bin``` folder inside the extracted directory.\
 Add it to your system's PATH\
 In System Variables, find Path > Click Edit.\
 Add the path to the bin folder, e.g., C:\ffmpeg\bin\
-Test PATH in console : ```ffmpeg -version```\
+Test PATH in console : ```ffmpeg -version```
 

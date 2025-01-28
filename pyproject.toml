@@ -1,0 +1,15 @@
+[project]
+name = "ComfyUI-EasyUrlLoader"
+description = "testing new comfy-node-registry"
+version = "1.0.1"
+license = {file = "LICENSE"}
+dependencies = ["yt_dlp"]
+
+[project.urls]
+Repository = "https://github.com/Apache0ne/ComfyUI-EasyUrlLoader"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "apacheone"
+DisplayName = "ComfyUI-EasyUrlLoader"
+Icon = ""

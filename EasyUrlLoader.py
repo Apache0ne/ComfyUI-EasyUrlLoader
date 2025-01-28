@@ -12,7 +12,7 @@ class EasyUrlLoader:
             }
         }
 
-    RETURN_TYPES = ("STRING",)  # Return type changed to STRING for video file path
+    RETURN_TYPES = ("video",)  # Return type changed to STRING for video file path
     FUNCTION = "download_video"
     CATEGORY = "Custom Nodes"
 
@@ -55,8 +55,7 @@ class EasyUrlLoader:
 
                 if frames:
                    
-                	processed_frames += len(frames)
-
+                    processed_frames += len(frames)
             cap.release()
 
             

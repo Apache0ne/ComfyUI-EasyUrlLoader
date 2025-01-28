@@ -1,5 +1,5 @@
 [project]
-name = "ComfyUI-EasyUrlLoader"
+name = "comfyui-easyurlloader"
 description = "testing new comfy-node-registry second try"
 version = "1.0.2"
 license = {file = "LICENSE"}

@@ -15,6 +15,7 @@ After download user can move YT video to other video editing APPS for cliping et
 For users will no ad block this makes getting YT videos easier
 ## Dependencies
 'yt_dlp' py lib
+'FFmpeg' non-py lib 
 ## Installation
 ComfyUI-Manager (rec)\
 Can be downloaded from ComfyUI-manager\
@@ -28,4 +29,14 @@ Inside venv\Scripts\
 ```activate```\
 ```pip install yt_dlp```\
 Inside Custom_nodes Folder\
-```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```
+```git clone https://github.com/Apache0ne/ComfyUI-EasyUrlLoader.git ```\
+##FFmpeg Installation\
+Download pre-built package here based on OS(bottom middle left):
+```https://ffmpeg.org/download.html#build-windows```\
+Use ```7-Zip``` or another archive tool to extract the .7z file\
+Locate the ```bin``` folder inside the extracted directory.\
+Add it to your system's PATH\
+In System Variables, find Path > Click Edit.\
+Add the path to the bin folder, e.g., C:\ffmpeg\bin\
+Test PATH in console : ```ffmpeg -version```\
+

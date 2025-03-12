@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-easyurlloader"
 description = "load and download YouTube videos from URL's for quick and easy use for vid2vid cases."
-version = "1.0.9"
+version = "1.1.0"
 license = {file = "LICENSE"}
 dependencies = ["yt_dlp","ffmpeg-python"]
 

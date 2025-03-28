@@ -12,7 +12,7 @@ Pros\
 Faster than using other 3rd party downloaders and needing to transfer files around\
 Will try to get 4k video compared to most other 3rd party downloaders only doing 1080.\
 After download user can move YT video to other video editing APPS for cliping etc.\
-For users will no ad block this makes getting YT videos easier
+For users with no ad block this makes getting YT videos easier
 ## Dependencies
 'yt_dlp' py lib\
 'ffmpeg-python' py lib\

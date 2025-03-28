@@ -1,13 +1,13 @@
 # EasyUrlLoader
-A simple YT downloader node for ComfyUI using video Urls. \
+A simple YT downloader node for ComfyUI using video and audio Urls. \
 ![image](https://github.com/user-attachments/assets/30501d79-6073-4653-8eaf-452ebc7fd719)\
 Needed a faster way to download YT videos when using comfyUI and testing new tech. \
 Will get the best resolution for the video so works great when running a video through a CN for a vid2vid pass.
 ## CONS & PROS
 Cons\
-User needs to go to downloads inside the custom node and see the FPS of downloaded videos\
-User needs to do math when only wanting small parts of a YT video\
-Only works for YT URLs for now\
+User needs to go to downloads inside the custom node and see the FPS of downloaded videos(added custom PATHS, VHS nodes show FPS)\
+User needs to do math when only wanting small parts of a YT video(VHS nodes help a lot now)\
+Only works for YT URLs for now[working on new node to pull from any website waiting for a local agents small to do the job at speed)\
 Pros\
 Faster than using other 3rd party downloaders and needing to transfer files around\
 Will try to get 4k video compared to most other 3rd party downloaders only doing 1080.\

@@ -1,0 +1,7 @@
+# Local standalone packaging artifacts (do not commit binary dependencies)
+desktop/vendor/
+build/
+dist/
+*.spec
+__pycache__/
+*.py[cod]

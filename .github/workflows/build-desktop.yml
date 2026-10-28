@@ -11,6 +11,10 @@ on:
       - tests/**
   workflow_dispatch:
 
+concurrency:
+  group: universal-url-desktop-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -36,7 +40,7 @@ jobs:
       - name: Checkout requested branch only
         uses: actions/checkout@v4
         with:
-          ref: Universal-URLdownloader
+          ref: ${{ github.sha }}
           persist-credentials: false
       - name: Set up Python
         uses: actions/setup-python@v5

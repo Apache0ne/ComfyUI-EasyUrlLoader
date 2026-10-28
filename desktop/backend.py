@@ -46,6 +46,28 @@ def bundled_ffmpeg():
     return str(target)
 
 
+def bundled_deno():
+    """Return bundled Deno in frozen apps, or an installed Deno for source runs."""
+    name = "deno.exe" if sys.platform == "win32" else "deno"
+    if getattr(sys, "frozen", False):
+        binary = Path(sys._MEIPASS) / name
+        if not binary.is_file():
+            raise RuntimeError("The bundled Deno runtime is missing from this app build")
+        return str(binary)
+    return shutil.which("deno")
+
+
+def configure_js_runtime():
+    """Make Deno visible to the existing ComfyUI probe and to yt-dlp."""
+    deno = bundled_deno()
+    if deno:
+        directory = str(Path(deno).parent)
+        current = os.environ.get("PATH", "")
+        if directory not in current.split(os.pathsep):
+            os.environ["PATH"] = directory + os.pathsep + current
+    return deno
+
+
 def self_test():
     """Smoke-test prerequisites without launching a window or using the network."""
     binary = bundled_ffmpeg()
@@ -55,10 +77,16 @@ def self_test():
     if not completed.stdout.startswith("ffmpeg version"):
         raise RuntimeError("FFmpeg reported an unexpected version response")
     assert _normalise_url("example.com") == "https://example.com"
+    deno = configure_js_runtime()
+    if deno:
+        result = subprocess.run([deno, "--version"], capture_output=True, text=True, timeout=20, check=True)
+        if "deno" not in result.stdout.lower():
+            raise RuntimeError("Deno runtime self-test failed")
     print("EasyUrlLoader desktop self-test OK: FFmpeg, yt-dlp, URL core")
 
 
 def analyze(url):
+    configure_js_runtime()
     return _probe_url(url)
 
 
@@ -72,6 +100,7 @@ def download(url, directory, kind, selector=None, on_progress=None):
     output.mkdir(parents=True, exist_ok=True)
     selector = selector or DEFAULT_FORMATS[kind]
     ffmpeg_path = bundled_ffmpeg()
+    deno = configure_js_runtime()
 
     def progress_hook(event):
         if not on_progress:
@@ -96,6 +125,8 @@ def download(url, directory, kind, selector=None, on_progress=None):
         "overwrites": False,
         "progress_hooks": [progress_hook],
     }
+    if deno:
+        options["js_runtimes"] = {"deno": {"path": deno}}
     if kind == "full":
         options["merge_output_format"] = "mp4"
     elif kind == "audio":

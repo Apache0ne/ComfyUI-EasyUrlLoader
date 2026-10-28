@@ -65,8 +65,9 @@ jobs:
         if: matrix.kind == 'windows'
         shell: pwsh
         run: |
-          & .\dist\EasyUrlLoader.exe --self-test
-          if ($LASTEXITCODE -ne 0) { throw "Windows EXE smoke test failed: $LASTEXITCODE" }
+          $exe = (Resolve-Path ".\dist\EasyUrlLoader.exe").Path
+          $proc = Start-Process -FilePath $exe -ArgumentList "--self-test" -PassThru -Wait
+          if ($proc.ExitCode -ne 0) { throw "Windows EXE smoke test failed: $($proc.ExitCode)" }
       - name: Build native macOS application bundle
         if: matrix.kind == 'mac'
         shell: bash

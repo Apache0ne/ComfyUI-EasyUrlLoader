@@ -1,0 +1,139 @@
+name: Build Universal URL Downloader desktop apps
+
+on:
+  push:
+    branches:
+      - Universal-URLdownloader
+    paths:
+      - .github/workflows/build-desktop.yml
+      - desktop/**
+      - EasyUrlLoader.py
+      - tests/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/Universal-URLdownloader'
+    name: Build ${{ matrix.label }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: Windows-x64
+            os: windows-2022
+            kind: windows
+          - label: macOS-Apple-Silicon
+            os: macos-15
+            kind: mac
+          - label: macOS-Intel
+            os: macos-15-intel
+            kind: mac
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout requested branch only
+        uses: actions/checkout@v4
+        with:
+          ref: Universal-URLdownloader
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install desktop build dependencies
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r desktop/requirements-build.txt
+      - name: Stage FFmpeg as a conventional ffmpeg executable
+        run: python desktop/prepare_ffmpeg.py
+      - name: Run desktop backend tests
+        run: python -m unittest discover -s tests -v
+      - name: Build Windows single-file EXE
+        if: matrix.kind == 'windows'
+        shell: bash
+        run: |
+          python -m PyInstaller --noconfirm --clean --windowed --onefile \
+            --name EasyUrlLoader --paths . \
+            --collect-all yt_dlp --add-binary "desktop/vendor/ffmpeg.exe:." \
+            desktop/app.py
+      - name: Smoke-test Windows executable without launching a GUI
+        if: matrix.kind == 'windows'
+        shell: pwsh
+        run: |
+          & .\dist\EasyUrlLoader.exe --self-test
+          if ($LASTEXITCODE -ne 0) { throw "Windows EXE smoke test failed: $LASTEXITCODE" }
+      - name: Build native macOS application bundle
+        if: matrix.kind == 'mac'
+        shell: bash
+        run: |
+          python -m PyInstaller --noconfirm --clean --windowed --onedir \
+            --name EasyUrlLoader --paths . \
+            --osx-bundle-identifier com.apacheone.easyurlloader \
+            --collect-all yt_dlp --add-binary "desktop/vendor/ffmpeg:." \
+            desktop/app.py
+      - name: Smoke-test macOS executable without launching a GUI
+        if: matrix.kind == 'mac'
+        shell: bash
+        run: dist/EasyUrlLoader.app/Contents/MacOS/EasyUrlLoader --self-test
+      - name: Package macOS app for download
+        if: matrix.kind == 'mac'
+        shell: bash
+        run: |
+          cd dist
+          ditto -c -k --sequesterRsrc --keepParent EasyUrlLoader.app "EasyUrlLoader-${{ matrix.label }}.zip"
+      - name: Upload Windows installer-free EXE
+        if: matrix.kind == 'windows'
+        uses: actions/upload-artifact@v4
+        with:
+          name: EasyUrlLoader-${{ matrix.label }}
+          path: dist/EasyUrlLoader.exe
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload macOS application ZIP
+        if: matrix.kind == 'mac'
+        uses: actions/upload-artifact@v4
+        with:
+          name: EasyUrlLoader-${{ matrix.label }}
+          path: dist/EasyUrlLoader-${{ matrix.label }}.zip
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    name: Publish downloadable desktop prerelease
+    if: github.ref == 'refs/heads/Universal-URLdownloader'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Download tested artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: EasyUrlLoader-*
+          path: release-files
+          merge-multiple: true
+      - name: Verify all three platform packages exist
+        shell: bash
+        run: |
+          test -s release-files/EasyUrlLoader.exe
+          test -s release-files/EasyUrlLoader-macOS-Intel.zip
+          test -s release-files/EasyUrlLoader-macOS-Apple-Silicon.zip
+      - name: Publish prerelease assets without changing main
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          REF_SHA: ${{ github.sha }}
+          BUILD_NUMBER: ${{ github.run_number }}
+        run: |
+          gh release create "universal-url-desktop-${BUILD_NUMBER}" \
+            release-files/EasyUrlLoader.exe#EasyUrlLoader-Windows-x64.exe \
+            release-files/EasyUrlLoader-macOS-Intel.zip \
+            release-files/EasyUrlLoader-macOS-Apple-Silicon.zip \
+            --target "$REF_SHA" \
+            --title "Universal URL Downloader desktop build ${BUILD_NUMBER}" \
+            --notes "Standalone Windows x64 EXE, macOS Intel app, and macOS Apple Silicon app built and smoke-tested from Universal-URLdownloader. Unsigned/unnotarized binaries: see desktop/README.md for platform security prompts." \
+            --prerelease

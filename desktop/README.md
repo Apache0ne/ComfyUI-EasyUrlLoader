@@ -1,6 +1,6 @@
 # Universal URL Downloader — standalone desktop app
 
-This branch includes a separate desktop UI for the existing downloader. The desktop app **does not require ComfyUI, Python, or a separately installed FFmpeg**. It uses the branch's `EasyUrlLoader.py` URL probing/format choices, bundles `yt-dlp` and an FFmpeg executable via `imageio-ffmpeg`, and saves full videos, audio-only MP3, or video-only tracks into separate subfolders.
+This branch includes a separate desktop UI for the existing downloader. The desktop app **does not require ComfyUI, Python, or a separately installed FFmpeg**. It uses the branch's `EasyUrlLoader.py` URL probing/format choices, bundles `yt-dlp`, its EJS YouTube challenge scripts, verified native Deno runtime, and an FFmpeg executable via `imageio-ffmpeg`, and saves full videos, audio-only MP3, or video-only tracks into separate subfolders.
 
 ## Download
 
@@ -24,7 +24,7 @@ Some sites restrict media extraction, require accounts/cookies, or change format
 
 ## Build / test locally
 
-Use Python 3.12 with Tk available:
+Use Python 3.12 with Tk available. For full YouTube support in source mode, install Deno 2.3+ on your PATH; the downloadable builds already include Deno:
 
 ```bash
 python -m pip install -r desktop/requirements-build.txt
@@ -33,6 +33,6 @@ python -m desktop
 python -m desktop --self-test
 ```
 
-The workflow `.github/workflows/build-desktop.yml` targets only the `Universal-URLdownloader` branch (`push` plus manual dispatch), using Windows x64, macOS ARM64 and macOS Intel runners. PyInstaller produces a one-file Windows `.exe` and native macOS `.app` bundles zipped with `ditto`; all use bundled FFmpeg. After a successful build, it creates a uniquely tagged **prerelease pointing to the tested branch SHA**, without touching `main`.
+The workflow `.github/workflows/build-desktop.yml` targets only the `Universal-URLdownloader` branch (`push` plus manual dispatch), using Windows x64, macOS ARM64 and macOS Intel runners. PyInstaller produces a one-file Windows `.exe` and native macOS `.app` bundles zipped with `ditto`; all use bundled FFmpeg, Deno, and yt-dlp EJS scripts. After a successful build, it creates a uniquely tagged **prerelease pointing to the tested branch SHA**, without touching `main`.
 
 Note: FFmpeg binaries distributed by `imageio-ffmpeg` have their own codec and LGPL/GPL licensing considerations. Review the shipped FFmpeg build's `-L` and `-version` outputs before public redistribution, and satisfy all applicable notice/source obligations.

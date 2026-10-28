@@ -1,4 +1,4 @@
 # Used by GitHub Actions only; ComfyUI's requirements.txt remains unchanged.
 pyinstaller>=6.12,<7
-yt-dlp>=2025.1.1
+yt-dlp[default]>=2025.11.12
 imageio-ffmpeg>=0.6,<1
